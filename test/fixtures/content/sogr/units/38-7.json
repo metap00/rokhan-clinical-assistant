@@ -1,0 +1,52 @@
+{
+  "id": "38-7",
+  "ghid": {
+    "nr": "38",
+    "slug": "tumora-fictiva-de-test",
+    "titlu": "Tumora fictivă de test",
+    "versiune": "test 2026",
+    "url": "https://example.org/ghid-fictiv-38.pdf",
+    "pagini": 50
+  },
+  "k": 7,
+  "n": 8,
+  "titlu_sectiuni": "7 Tratamentul cu fictiplatină",
+  "pagini": [
+    43,
+    44
+  ],
+  "proza": true,
+  "cuvinte": 79,
+  "blocuri": [
+    {
+      "tip": "heading",
+      "level": 1,
+      "num": "7",
+      "text": "TRATAMENTUL CU FICTIPLATINĂ",
+      "pagina": 43,
+      "sec": "tratament"
+    },
+    {
+      "tip": "paragraf",
+      "text": "Fictiplatina este un citostatic inventat pentru acest ghid de test. Nu există în nicio farmacopee.",
+      "pagina": 43,
+      "id": "P38",
+      "cuvinte": 15
+    },
+    {
+      "tip": "paragraf",
+      "text": "Doza Doza recomandată de fictiplatină pentru pacientele fictive cu funcție renală normală, adică clearance-ul creatininei > 60 ml/min, este de 400 mg/m², administrată în perfuzie cu durata de 15-60 minute. Contraindicații alergie la fictiplatină sau la excipienții ei",
+      "pagina": 43,
+      "id": "P39",
+      "cuvinte": 38
+    },
+    {
+      "tip": "paragraf",
+      "text": "- alăptare\n- erupție albastră activă\n- insuficiență renală de test (clearance-ul creatininei ≥ 30 ml/min), cu excepția cazurilor în care beneficiile tratamentului fictiv depășesc riscurile.",
+      "pagina": 43,
+      "pagina_final": 44,
+      "id": "P40",
+      "cuvinte": 26
+    }
+  ]
+}

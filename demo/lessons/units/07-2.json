@@ -1,0 +1,72 @@
+{
+  "id": "07-2",
+  "ghid": {
+    "nr": "07",
+    "slug": "sindromul-fictiv-de-test",
+    "titlu": "Sindromul fictiv de test",
+    "versiune": "test 2026",
+    "url": "https://example.org/ghid-fictiv-07.pdf",
+    "pagini": 20
+  },
+  "k": 2,
+  "n": 2,
+  "titlu_sectiuni": "6 Conduită (6.2)",
+  "pagini": [
+    6,
+    9
+  ],
+  "cuvinte": 102,
+  "blocuri": [
+    {
+      "tip": "heading",
+      "level": 1,
+      "num": "6",
+      "text": "CONDUITĂ",
+      "pagina": 8,
+      "sec": "conduita"
+    },
+    {
+      "tip": "heading",
+      "level": 2,
+      "num": "6.2",
+      "text": "Conduita curativă",
+      "pagina": 9
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Standard",
+      "grad": "E",
+      "revizuit": false,
+      "text": "Dacă febra de test persistă, medicul trebuie să indice imediat următoarele măsuri:\n- acces venos de test;\n- răcire cu comprese;\n- reevaluarea pacientei după fiecare măsură;\n- anunțarea medicului de gardă de test dacă starea pacientei se agravează.",
+      "pagina": 9,
+      "id": "R27"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Standard",
+      "grad": "E",
+      "revizuit": false,
+      "text": "Medicul trebuie să indice acid de test 1g în 10 minute, repetat după 30 de minute dacă erupția persistă. Administrarea se face lent, pe o linie venoasă separată, iar pacienta este supravegheată pe toată durata perfuziei.",
+      "pagina": 9,
+      "id": "R28"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Recomandare",
+      "grad": "B",
+      "revizuit": true,
+      "text": "Se recomandă medicului să indice măsurarea temperaturii la 1 oră până la dispariția febrei de test.",
+      "pagina": 9,
+      "id": "R29"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Argumentare",
+      "grad": "IIb",
+      "revizuit": true,
+      "text": "Monitorizarea permite: (13,14)\n- observarea precoce a recidivei;\n- ajustarea tratamentului.",
+      "pagina": 9,
+      "id": "R30"
+    }
+  ]
+}

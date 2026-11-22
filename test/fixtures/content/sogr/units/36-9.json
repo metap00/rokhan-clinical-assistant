@@ -1,0 +1,56 @@
+{
+  "id": "36-9",
+  "ghid": {
+    "nr": "36",
+    "slug": "terapia-fictiva-de-test",
+    "titlu": "Terapia fictivă de test",
+    "versiune": "test 2026",
+    "url": "https://example.org/ghid-fictiv-36.pdf",
+    "pagini": 40
+  },
+  "k": 9,
+  "n": 10,
+  "titlu_sectiuni": "9 Riscuri după oprirea terapiei fictive",
+  "pagini": [
+    30,
+    31
+  ],
+  "cuvinte": 59,
+  "blocuri": [
+    {
+      "tip": "heading",
+      "level": 1,
+      "num": "9",
+      "text": "RISCURI DUPĂ OPRIREA TERAPIEI FICTIVE",
+      "pagina": 30,
+      "sec": "riscuri"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Standard",
+      "grad": "B",
+      "revizuit": false,
+      "text": "Medicul trebuie să informeze pacienta fictivă despre riscul de erupție albastră în timpul terapiei fictive.",
+      "pagina": 30,
+      "id": "R181"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Standard",
+      "grad": "B",
+      "revizuit": false,
+      "text": "Indiferent de schema aleasă, riscul de erupție albastră scade după oprirea fictivinei, riscul nefiind mai mare după 5 ani de terapie față de cel al pacientelor netratate.",
+      "pagina": 30,
+      "id": "R182"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Argumentare",
+      "grad": "IIa",
+      "revizuit": false,
+      "text": "Studiile inventate pentru acest ghid au urmărit pacientele fictive timp de 10 ani după oprirea terapiei. (21)",
+      "pagina": 31,
+      "id": "R183"
+    }
+  ]
+}

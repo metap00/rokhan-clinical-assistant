@@ -1,0 +1,365 @@
+{
+  "id": "07-1",
+  "ghid": {
+    "nr": "07",
+    "slug": "sindromul-fictiv-de-test",
+    "titlu": "Sindromul fictiv de test",
+    "versiune": "test 2026",
+    "url": "https://example.org/ghid-fictiv-07.pdf",
+    "pagini": 20
+  },
+  "k": 1,
+  "n": 2,
+  "titlu_sectiuni": "1 Introducere → 5 Evaluare și diagnostic → 6 Conduită (6.1–6.2)",
+  "pagini": [
+    6,
+    9
+  ],
+  "cuvinte": 700,
+  "blocuri": [
+    {
+      "tip": "heading",
+      "level": 1,
+      "num": "1",
+      "text": "INTRODUCERE",
+      "pagina": 6,
+      "sec": "introducere"
+    },
+    {
+      "tip": "paragraf",
+      "text": "Sindromul fictiv de test (SFT) este o afecțiune inventată pentru verificarea automată a aplicației. Nu există în nicio clasificare medicală, iar textul de mai jos nu se folosește în practica clinică. Ghidul imită doar forma unui ghid real: secțiuni, rânduri cu grad și paragrafe explicative.",
+      "pagina": 6,
+      "id": "P1",
+      "cuvinte": 45
+    },
+    {
+      "tip": "paragraf",
+      "text": "Epidemiologie: în lumea imaginară a testelor, SFT afectează între 5-15% dintre pacientele fictive. (2,3)",
+      "pagina": 6,
+      "id": "P2",
+      "cuvinte": 14
+    },
+    {
+      "tip": "paragraf",
+      "text": "Definiție:\n- febră de test care durează mai mult de 6 ore la o pacientă fictivă;\n- asociată cu o erupție albastră pe antebrațe.",
+      "pagina": 6,
+      "id": "P3",
+      "cuvinte": 24
+    },
+    {
+      "tip": "paragraf",
+      "text": "Comentarii:\n- Diagnosticul este, prin construcție, imposibil în afara testelor.\n- Erupția albastră dispare la spălarea cu apă rece, ceea ce o deosebește de orice boală reală.",
+      "pagina": 6,
+      "id": "P4",
+      "cuvinte": 27
+    },
+    {
+      "tip": "heading",
+      "level": 1,
+      "num": "5",
+      "text": "EVALUARE ȘI DIAGNOSTIC",
+      "pagina": 7,
+      "sec": "evaluare"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Standard",
+      "grad": "B",
+      "revizuit": false,
+      "text": "Medicul trebuie să:\n- precizeze diagnosticul de sindrom fictiv de test și să\n- evalueze imediat starea generală a pacientei fictive.",
+      "pagina": 7,
+      "id": "R1"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Standard",
+      "grad": "B",
+      "revizuit": false,
+      "text": "Medicul trebuie să cunoască faptul că o pacientă fictivă are un volum de lichid albastru de 75 ml/kg, care scade odată cu febra de test.",
+      "pagina": 7,
+      "id": "R2"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Argumentare",
+      "grad": "IIb",
+      "revizuit": false,
+      "text": "O pierdere de 500-1.000 ml de lichid albastru este de obicei bine tolerată de pacienta fictivă. Semnele de șoc imaginar apar abia la pierderi mai mari, când pacienta devine palidă, agitată și foarte însetată. (4)",
+      "pagina": 7,
+      "id": "R3"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Standard",
+      "grad": "B",
+      "revizuit": false,
+      "text": "Medicul trebuie să evalueze fiecare pacientă fictivă pentru factorii de risc ai SFT: contactul cu alte paciente de test, expunerea la ploaia verde, antecedentele personale de SFT și cazurile de SFT din familia pacientei. Factorii găsiți se notează în foaia de observație de test.",
+      "pagina": 7,
+      "id": "R4"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Argumentare",
+      "grad": "IIb",
+      "revizuit": false,
+      "text": "Când identifică factori de risc, medicul planifică din timp monitorizarea, anunță echipa și evită astfel surprizele din garda de test. (5)",
+      "pagina": 7,
+      "id": "R5"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Opțiune",
+      "grad": "B",
+      "revizuit": true,
+      "text": "Dacă este disponibil, medicul poate solicita scorul Zeta, un test de laborator inventat pentru acest ghid.",
+      "pagina": 7,
+      "id": "R6"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Argumentare",
+      "grad": "IIb",
+      "revizuit": false,
+      "text": "Scorul Zeta confirmă cel mai rapid diagnosticul de SFT, în lumea testelor. (6)",
+      "pagina": 7,
+      "id": "R7"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Recomandare",
+      "grad": "E",
+      "revizuit": true,
+      "text": "În cazurile cu erupție extinsă, se recomandă medicului să examineze pacienta în sala de tratament, cu lumină bună și cu un asistent prezent.",
+      "pagina": 7,
+      "id": "R8"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Argumentare",
+      "grad": null,
+      "revizuit": true,
+      "text": "Pentru a vedea întreaga erupție, pacienta fictivă este examinată complet, nu doar la nivelul antebrațelor.",
+      "pagina": 7,
+      "id": "R9"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Standard",
+      "grad": "B",
+      "revizuit": false,
+      "text": "Dacă febra de test crește brusc, medicul trebuie ca simultan cu răcirea pacientei să caute cauza febrei.",
+      "pagina": 7,
+      "pagina_final": 8,
+      "id": "R10"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Argumentare",
+      "grad": "IIb",
+      "revizuit": false,
+      "text": "Diagnosticul cauzei permite un tratament adaptat și eficient al SFT. (1,7)",
+      "pagina": 8,
+      "id": "R11"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Standard",
+      "grad": "E",
+      "revizuit": true,
+      "text": "Medicul trebuie să diagnosticheze forma ușoară de SFT când erupția este limitată la un singur antebraț.",
+      "pagina": 8,
+      "id": "R12"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Standard",
+      "grad": "E",
+      "revizuit": true,
+      "text": "Medicul trebuie să diagnosticheze forma severă de SFT când erupția cuprinde ambele antebrațe și pacienta are febră de test. În forma severă, pacienta este internată și reevaluată de medicul de gardă de test.",
+      "pagina": 8,
+      "id": "R13"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Standard",
+      "grad": "E",
+      "revizuit": true,
+      "text": "Medicul trebuie să diagnosticheze forma atipică de SFT când erupția este verde în loc de albastră.",
+      "pagina": 8,
+      "id": "R14"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Standard",
+      "grad": "B",
+      "revizuit": true,
+      "text": "Medicul trebuie să noteze în foaia de observație de test ora apariției erupției și culoarea ei.",
+      "pagina": 8,
+      "id": "R15"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Argumentare",
+      "grad": "IIb",
+      "revizuit": true,
+      "text": "O notare inexactă poate duce la confuzii între formele de SFT și la tratamente nepotrivite. (8)",
+      "pagina": 8,
+      "id": "R16"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Standard",
+      "grad": "E",
+      "revizuit": true,
+      "text": "Medicul trebuie să suspecteze o formă atipică atunci când pacienta are erupție, dar nu are febră de test.",
+      "pagina": 8,
+      "id": "R17"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Argumentare",
+      "grad": "IV",
+      "revizuit": true,
+      "text": "Forma atipică este rară în lumea testelor și ușor de ratat la un examen grăbit. (9)",
+      "pagina": 8,
+      "id": "R18"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Standard",
+      "grad": "E",
+      "revizuit": true,
+      "text": "Medicul trebuie să confirme diagnosticul de SFT pe baza:\n- anamnezei;\n- examenului erupției;\n- scorului Zeta, când acesta este disponibil.",
+      "pagina": 8,
+      "id": "R19"
+    },
+    {
+      "tip": "heading",
+      "level": 1,
+      "num": "6",
+      "text": "CONDUITĂ",
+      "pagina": 8,
+      "sec": "conduita"
+    },
+    {
+      "tip": "heading",
+      "level": 2,
+      "num": "6.1",
+      "text": "Conduita profilactică",
+      "pagina": 8
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Recomandare",
+      "grad": "E",
+      "revizuit": false,
+      "text": "Medicul le va recomanda pacientelor fictive cu factori de risc să evite ploaia verde.",
+      "pagina": 8,
+      "id": "R20"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Recomandare",
+      "grad": "A",
+      "revizuit": false,
+      "text": "Se recomandă ca medicul să indice tuturor pacientelor fictive hidratarea cu apă rece.",
+      "pagina": 8,
+      "id": "R21"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Argumentare",
+      "grad": "Ia",
+      "revizuit": false,
+      "text": "Studiile inventate pentru acest ghid arată că hidratarea scurtează febra de test. (10)",
+      "pagina": 8,
+      "id": "R22"
+    },
+    {
+      "tip": "heading",
+      "level": 3,
+      "num": "6.1.1",
+      "text": "Tratamentul medicamentos",
+      "pagina": 9
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Standard",
+      "grad": "A",
+      "revizuit": true,
+      "text": "Medicul trebuie să indice fictivină 10 mg/kg pe cale orală, repetată după 12 ore dacă febra de test persistă.",
+      "pagina": 9,
+      "id": "R23"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Argumentare",
+      "grad": "Ia",
+      "revizuit": true,
+      "text": "Fictivina este un medicament inventat, iar doza de mai sus există doar pentru teste. (11)",
+      "pagina": 9,
+      "id": "R24"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Standard",
+      "grad": "A",
+      "revizuit": true,
+      "text": "Medicul trebuie să nu indice niciodată fictivină pacientelor fictive alergice la culoarea albastră.",
+      "pagina": 9,
+      "id": "R25"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Argumentare",
+      "grad": "Ia",
+      "revizuit": false,
+      "text": "La aceste paciente, fictivina poate accentua erupția. (12)",
+      "pagina": 9,
+      "id": "R26"
+    },
+    {
+      "tip": "heading",
+      "level": 2,
+      "num": "6.2",
+      "text": "Conduita curativă",
+      "pagina": 9
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Standard",
+      "grad": "E",
+      "revizuit": false,
+      "text": "Dacă febra de test persistă, medicul trebuie să indice imediat următoarele măsuri:\n- acces venos de test;\n- răcire cu comprese;\n- reevaluarea pacientei după fiecare măsură;\n- anunțarea medicului de gardă de test dacă starea pacientei se agravează.",
+      "pagina": 9,
+      "id": "R27"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Standard",
+      "grad": "E",
+      "revizuit": false,
+      "text": "Medicul trebuie să indice acid de test 1g în 10 minute, repetat după 30 de minute dacă erupția persistă. Administrarea se face lent, pe o linie venoasă separată, iar pacienta este supravegheată pe toată durata perfuziei.",
+      "pagina": 9,
+      "id": "R28"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Recomandare",
+      "grad": "B",
+      "revizuit": true,
+      "text": "Se recomandă medicului să indice măsurarea temperaturii la 1 oră până la dispariția febrei de test.",
+      "pagina": 9,
+      "id": "R29"
+    },
+    {
+      "tip": "row",
+      "tip_rand": "Argumentare",
+      "grad": "IIb",
+      "revizuit": true,
+      "text": "Monitorizarea permite: (13,14)\n- observarea precoce a recidivei;\n- ajustarea tratamentului.",
+      "pagina": 9,
+      "id": "R30"
+    }
+  ]
+}

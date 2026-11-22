@@ -1,0 +1,190 @@
+{
+  "id": "01-1",
+  "ghid": {
+    "nr": "01",
+    "slug": "travaliul-fictiv-de-test",
+    "titlu": "Travaliul fictiv de test",
+    "versiune": "test 2026",
+    "url": "https://example.org/ghid-fictiv-01.pdf",
+    "pagini": 24
+  },
+  "k": 1,
+  "n": 3,
+  "titlu_sectiuni": "1 Introducere → 2 Scop → 5 Îngrijirea personalizată (5.1) → 6 Măsuri generale (6.1–6.2) → 7 Faza de test a travaliului",
+  "pagini": [
+    3,
+    6
+  ],
+  "proza": true,
+  "cuvinte": 722,
+  "blocuri": [
+    {
+      "tip": "heading",
+      "level": 1,
+      "num": "1",
+      "text": "INTRODUCERE",
+      "pagina": 3,
+      "sec": "introducere"
+    },
+    {
+      "tip": "paragraf",
+      "text": "Acest ghid descrie îngrijirea unei paciente fictive în timpul unui travaliu de test. Este scris pentru verificarea automată a aplicației și nu provine din niciun ghid real. Recomandările lui sunt inventate și nu se aplică la paciente adevărate. Structura imită totuși un ghid clinic: introducere, scop, măsuri generale și o descriere a fazelor travaliului de test.",
+      "pagina": 3,
+      "id": "P1",
+      "cuvinte": 56
+    },
+    {
+      "tip": "paragraf",
+      "text": "Autorii imaginari ai ghidului au pornit de la o întrebare simplă: cum arată o lectură bună atunci când textul sursă este curat, ordonat și ușor de verificat? Răspunsul lor este acest document, în care fiecare paragraf are un singur mesaj și fiecare cifră apare într-o propoziție clară.",
+      "pagina": 3,
+      "id": "P2",
+      "cuvinte": 47
+    },
+    {
+      "tip": "heading",
+      "level": 1,
+      "num": "2",
+      "text": "SCOP",
+      "pagina": 3,
+      "sec": "scop"
+    },
+    {
+      "tip": "paragraf",
+      "text": "Scopul ghidului este standardizarea îngrijirii în travaliul de test, astfel încât orice medic fictiv să urmeze aceiași pași, în aceeași ordine, cu aceleași criterii de alarmă.",
+      "pagina": 3,
+      "id": "P3",
+      "cuvinte": 26
+    },
+    {
+      "tip": "paragraf",
+      "text": "Ghidul se adresează medicilor fictivi, moașelor de test și oricărui alt membru al echipei imaginare care participă la îngrijirea pacientei. El nu înlocuiește judecata clinică, ci o organizează. Fiecare recomandare poate fi adaptată situației, cu condiția ca motivul adaptării să fie notat în foaia de observație de test.",
+      "pagina": 3,
+      "pagina_final": 4,
+      "id": "P4",
+      "cuvinte": 48
+    },
+    {
+      "tip": "heading",
+      "level": 1,
+      "num": "5",
+      "text": "ÎNGRIJIREA PERSONALIZATĂ",
+      "pagina": 4,
+      "sec": "ingrijire"
+    },
+    {
+      "tip": "paragraf",
+      "text": "Pacienta fictivă trebuie tratată cu respect, iar intimitatea ei trebuie păstrată pe tot parcursul travaliului de test. Echipa se prezintă, explică fiecare examinare înainte de a o face și cere acordul pacientei. Dacă pacienta refuză o examinare, refuzul se respectă, se notează în foaia de observație de test și se discută din nou mai târziu, după ce pacienta a primit toate explicațiile.",
+      "pagina": 4,
+      "id": "P5",
+      "cuvinte": 62
+    },
+    {
+      "tip": "paragraf",
+      "text": "Comunicarea bună reduce anxietatea pacientei fictive. Medicul folosește un limbaj simplu, verifică dacă pacienta a înțeles și îi oferă timp pentru întrebări. Informațiile importante se repetă la schimbarea turei, pentru ca pacienta să audă același mesaj de la toată echipa.",
+      "pagina": 4,
+      "id": "P6",
+      "cuvinte": 40
+    },
+    {
+      "tip": "heading",
+      "level": 2,
+      "num": "5.1",
+      "text": "Planul de travaliu",
+      "pagina": 4
+    },
+    {
+      "tip": "paragraf",
+      "text": "La internare, echipa discută cu pacienta planul de travaliu de test: cine o însoțește, ce metode de calmare a durerii preferă și ce așteptări are de la echipă. Planul se notează și se revede ori de câte ori situația se schimbă. Orice abatere de la plan se explică pacientei, împreună cu motivul ei, și se notează în foaia de observație de test.",
+      "pagina": 4,
+      "id": "P7",
+      "cuvinte": 62
+    },
+    {
+      "tip": "paragraf",
+      "text": "Însoțitorul ales de pacientă poate rămâne lângă ea pe toată durata travaliului de test. Prezența lui scade nevoia de calmare a durerii și crește satisfacția pacientei fictive. Echipa îi explică însoțitorului ce poate face pentru a ajuta și când trebuie să iasă din sală, de exemplu în timpul unei manevre de urgență de test.",
+      "pagina": 4,
+      "id": "P8",
+      "cuvinte": 54
+    },
+    {
+      "tip": "heading",
+      "level": 1,
+      "num": "6",
+      "text": "MĂSURI GENERALE",
+      "pagina": 5,
+      "sec": "masuri"
+    },
+    {
+      "tip": "paragraf",
+      "text": "Pacienta fictivă poate bea lichide limpezi în timpul travaliului de test. Mobilizarea este încurajată, iar poziția aleasă de pacientă este respectată atât timp cât monitorizarea se poate face corect. Echipa verifică regulat dacă pacienta urinează, dacă îi este frig sau cald și dacă are nevoie de ajutor pentru a-și schimba poziția.",
+      "pagina": 5,
+      "id": "P9",
+      "cuvinte": 51
+    },
+    {
+      "tip": "heading",
+      "level": 2,
+      "num": "6.1",
+      "text": "Monitorizarea maternă",
+      "pagina": 5
+    },
+    {
+      "tip": "paragraf",
+      "text": "Medicul măsoară tensiunea arterială a pacientei fictive la internare și o notează în partogramă. O tensiune arterială diastolică de minim 110 mmHg la o singură determinare este un semn de alarmă și impune evaluarea imediată de către medicul de gardă de test. Medicul repetă măsurarea, caută semnele unei forme severe și decide, împreună cu echipa, dacă travaliul de test poate continua în aceeași sală.",
+      "pagina": 5,
+      "id": "P10",
+      "cuvinte": 64
+    },
+    {
+      "tip": "paragraf",
+      "text": "Temperatura se măsoară la internare și apoi periodic. O temperatură de 38° C sau mai mare la o singură determinare este un semn de alarmă și se raportează imediat medicului de gardă de test. Medicul caută sursa febrei, verifică dacă membranele sunt rupte și decide ce investigații de test sunt necesare.",
+      "pagina": 5,
+      "id": "P11",
+      "cuvinte": 51
+    },
+    {
+      "tip": "heading",
+      "level": 2,
+      "num": "6.2",
+      "text": "Monitorizarea fetală",
+      "pagina": 5
+    },
+    {
+      "tip": "paragraf",
+      "text": "La internare, moașa de test întreabă pacienta dacă a simțit mișcările fătului în ultimele 24 de ore. Apoi ascultă activitatea cardiacă fetală timp de cel puțin 1 minut, imediat după o contracție, și notează valoarea în partogramă.",
+      "pagina": 5,
+      "id": "P12",
+      "cuvinte": 37
+    },
+    {
+      "tip": "paragraf",
+      "text": "O frecvență cardiacă fetală sub 110 sau peste 160 bpm este un semn de alarmă în acest ghid fictiv. Moașa de test anunță medicul, care decide continuarea monitorizării sau trecerea la monitorizare continuă. Valoarea, ora și decizia medicului se notează în partogramă, ca orice altă constatare din timpul travaliului de test.",
+      "pagina": 5,
+      "pagina_final": 6,
+      "id": "P13",
+      "cuvinte": 51
+    },
+    {
+      "tip": "heading",
+      "level": 1,
+      "num": "7",
+      "text": "FAZA DE TEST A TRAVALIULUI",
+      "pagina": 6,
+      "sec": "faza"
+    },
+    {
+      "tip": "paragraf",
+      "text": "Faza de test a travaliului începe la internare și se încheie când pacienta fictivă este transferată în sala de nașteri de test. În această fază, echipa urmărește confortul pacientei, semnele de alarmă și progresul travaliului de test, notând totul în partogramă.",
+      "pagina": 6,
+      "id": "P14",
+      "cuvinte": 41
+    },
+    {
+      "tip": "paragraf",
+      "text": "Dacă pacienta fictivă dorește să se plimbe, echipa o încurajează. Dacă dorește să se odihnească, echipa îi oferă un spațiu liniștit. Niciuna dintre aceste alegeri nu influențează, în lumea testelor, durata travaliului.",
+      "pagina": 6,
+      "id": "P15",
+      "cuvinte": 32
+    }
+  ]
+}

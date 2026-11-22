@@ -1,0 +1,185 @@
+{
+  "schema": 3,
+  "unit": "07-1",
+  "titlu": "Sindromul fictiv de test: de la recunoaștere la tratament",
+  "context": "Sindromul fictiv de test este o boală inventată, folosită numai ca să verifice aplicația. Lectura urmărește totuși firul unei lecturi reale: cum recunoști boala, cum distingi formele ei, cum o previi și ce faci când febra persistă. Nimic din textul acesta nu este o recomandare medicală adevărată, iar tot ce citești aici rămâne în lumea testelor. Citește cardurile cu atenție: ele conțin textul ghidului fictiv, iar explicațiile de sub ele sunt scrise de asistent ca să lege ideile și să arate ce contează.",
+  "sectiuni": [
+    {
+      "titlu": "Recunoașterea SFT și evaluarea riscului",
+      "intro": "Ghidul fictiv începe cu volumul de lichid albastru al pacientei și cu evaluarea sistematică a factorilor de risc, înainte de orice tratament.",
+      "recomandari": [
+        "P3",
+        "R1",
+        "R2",
+        "R4",
+        "R6",
+        "R8"
+      ],
+      "explicatii": [
+        {
+          "ref": "R2",
+          "text": "Pacienta fictivă tolerează bine pierderile mici, așa că semnele de alarmă apar târziu. Lichidul albastru pierdut se urmărește activ, nu se estimează din priviri."
+        },
+        {
+          "ref": "R4",
+          "text": "Evaluarea riscului se face la orice pacientă fictivă, nu doar la cele care par bolnave. Multe cazuri apar fără niciun factor de risc cunoscut."
+        }
+      ],
+      "argumentare": [],
+      "puncte_cheie": [
+        "Evaluezi factorii de risc la orice pacientă fictivă.",
+        "Semnele de alarmă apar târziu.",
+        "Scorul Zeta este o opțiune, doar când laboratorul îl are."
+      ]
+    },
+    {
+      "titlu": "Formele SFT și diagnosticul",
+      "intro": "Când febra crește brusc, răcirea și căutarea cauzei merg în paralel. Ghidul fictiv dă criterii simple pentru fiecare formă a bolii.",
+      "recomandari": [
+        "R10",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R17",
+        "R19"
+      ],
+      "explicatii": [
+        {
+          "ref": "R10",
+          "text": "Nu aștepți ca febra să scadă ca să începi să cauți cauza. Răcirea și diagnosticul se fac simultan, de către aceeași echipă, iar fiecare membru știe ce are de făcut."
+        },
+        {
+          "ref": "R15",
+          "text": "Ora apariției și culoarea erupției sunt informațiile care separă formele bolii. Le notezi imediat, nu la sfârșitul gărzii."
+        }
+      ],
+      "argumentare": [
+        "R11",
+        "R16"
+      ],
+      "puncte_cheie": [
+        "Erupția pe un singur antebraț înseamnă forma ușoară.",
+        "Erupția verde înseamnă forma atipică.",
+        "Erupția fără febră te face să te gândești la forma atipică."
+      ]
+    },
+    {
+      "titlu": "Prevenția și tratamentul medicamentos",
+      "intro": "Prevenția este simplă și se aplică tuturor pacientelor fictive. Tratamentul medicamentos folosește un singur medicament inventat, cu o contraindicație clară.",
+      "recomandari": [
+        "R20",
+        "R21",
+        "R23",
+        "R25"
+      ],
+      "explicatii": [
+        {
+          "ref": "R21",
+          "text": "Hidratarea cu apă rece este măsura care scurtează cel mai mult febra de test, conform studiilor inventate. Este ieftină și se poate face oriunde."
+        },
+        {
+          "ref": "R25",
+          "text": "Alergia la culoarea albastră se caută înainte de prima doză. Dacă există, fictivina poate accentua erupția și agrava starea pacientei."
+        }
+      ],
+      "argumentare": [
+        "R22",
+        "R24",
+        "R26"
+      ],
+      "puncte_cheie": [
+        "Toate pacientele fictive primesc apă rece.",
+        "Fictivina se repetă dacă febra persistă.",
+        "Întrebi mereu de alergia la culoarea albastră.",
+        "Pacientele cu risc evită ploaia verde."
+      ]
+    },
+    {
+      "titlu": "Conduita când febra persistă",
+      "intro": "Dacă febra nu cedează, ghidul fictiv cere măsuri imediate, un tratament suplimentar și o monitorizare atentă până la vindecare.",
+      "recomandari": [
+        "R27",
+        "R28",
+        "R29"
+      ],
+      "explicatii": [
+        {
+          "ref": "R27",
+          "text": "Accesul venos, compresele și reevaluarea sunt pașii de bază. Urmezi această ordine și nu aștepți rezultatul scorului Zeta ca să începi."
+        },
+        {
+          "ref": "R28",
+          "text": "Acidul de test se dă lent și se repetă dacă erupția persistă. Ritmul administrării contează la fel de mult ca doza."
+        },
+        {
+          "ref": "R29",
+          "text": "Măsurarea regulată a temperaturii arată din timp o recidivă. Continui până când febra dispare complet, nu doar până scade."
+        }
+      ],
+      "argumentare": [
+        "R30"
+      ],
+      "puncte_cheie": [
+        "Accesul venos se asigură primul.",
+        "Acidul de test se dă lent.",
+        "Temperatura se urmărește până la vindecare.",
+        "Reevaluezi pacienta după fiecare pas."
+      ]
+    }
+  ],
+  "cifre": [
+    {
+      "eticheta": "Frecvența SFT",
+      "ref": "P2",
+      "valoare": "între 5-15%"
+    },
+    {
+      "eticheta": "Volumul de lichid albastru",
+      "ref": "R2",
+      "valoare": "75 ml/kg"
+    },
+    {
+      "eticheta": "Pierdere bine tolerată",
+      "ref": "R3",
+      "valoare": "500-1.000 ml"
+    },
+    {
+      "eticheta": "Doza de fictivină",
+      "ref": "R23",
+      "valoare": "10 mg/kg"
+    },
+    {
+      "eticheta": "Acidul de test",
+      "ref": "R28",
+      "valoare": "1g în 10 minute"
+    }
+  ],
+  "perle": [
+    "Răcirea și căutarea cauzei se fac în același timp, nu pe rând.",
+    "Culoarea erupției spune mai mult decât intensitatea ei.",
+    "Înainte de fictivină, întrebi de alergia la culoarea albastră."
+  ],
+  "quiz": [
+    {
+      "intrebare": "Ce volum de lichid albastru are o pacientă fictivă?",
+      "ref": "R2"
+    },
+    {
+      "intrebare": "Ce doză de acid de test indică ghidul fictiv și în cât timp se administrează?",
+      "ref": "R28",
+      "comentariu": "Doza și repetarea sunt în același rând."
+    },
+    {
+      "intrebare": "Cui nu i se administrează niciodată fictivina?",
+      "ref": "R25",
+      "comentariu": "Contraindicația este în rândul din ghid."
+    }
+  ],
+  "rezumat_telegram": [
+    "Toate pacientele fictive primesc hidratare cu apă rece.",
+    "Când febra persistă: acces venos, comprese, reevaluare.",
+    "Erupția verde înseamnă forma atipică.",
+    "Fictivina nu se dă pacientelor alergice la culoarea albastră."
+  ]
+}

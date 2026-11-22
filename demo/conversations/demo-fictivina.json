@@ -1,0 +1,13 @@
+{
+  "id": "demo-fictivina",
+  "title": "Doza de fictivină în SFT",
+  "createdAt": 0,
+  "updatedAt": 0,
+  "pending": false,
+  "imported": false,
+  "sdkSessionId": null,
+  "messages": [
+    { "id": "demo-1a", "role": "user", "text": "Ce doză de fictivină dau în sindromul fictiv de test și când o repet?", "images": [], "ts": 0, "urgent": false },
+    { "id": "demo-1b", "role": "assistant", "text": "**Fictivină 10 mg/kg pe cale orală**, repetată după **12 ore** dacă febra de test persistă.\n\nÎnainte de prima doză:\n- întrebi de **alergia la culoarea albastră**: la aceste paciente fictivina nu se dă, pentru că poate accentua erupția;\n- notezi ora apariției erupției și culoarea ei.\n\nDacă febra persistă după tratament: acces venos, comprese, reevaluare, apoi acid de test **1g în 10 minute**.\n\nSurse: Ghid fictiv de test 07 (Sindromul fictiv de test), p. 9", "images": [], "ts": 0, "urgent": false }
+  ]
+}

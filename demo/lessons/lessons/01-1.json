@@ -1,0 +1,130 @@
+{
+  "schema": 3,
+  "unit": "01-1",
+  "titlu": "Travaliul fictiv de test: respect, monitorizare și semne de alarmă",
+  "context": "Ghidul fictiv al travaliului de test este scris numai pentru verificarea aplicației. Lectura de azi îți arată cum arată o lectură de proză: îngrijirea personalizată, planul de travaliu, monitorizarea maternă și fetală și semnele de alarmă care cer medicul de gardă. Nimic de aici nu este o recomandare clinică reală. Cardurile de sub fiecare secțiune păstrează textul ghidului fictiv, iar explicațiile scurte leagă ideile. La final, quiz-ul te întreabă despre semnele de alarmă, pentru că ele sunt partea pe care o vei folosi cel mai des în gardă. Citește încet și oprește-te la fiecare semn de alarmă din carduri.",
+  "sectiuni": [
+    {
+      "titlu": "Îngrijirea personalizată",
+      "intro": "Ghidul fictiv începe cu relația dintre echipă și pacientă: respect, intimitate și o comunicare simplă.",
+      "recomandari": [
+        "P5",
+        "P6",
+        "P7",
+        "P8"
+      ],
+      "explicatii": [
+        {
+          "ref": "P7",
+          "text": "Planul de travaliu nu este un formular completat la internare și uitat. Îl revezi când situația se schimbă și notezi motivul."
+        }
+      ],
+      "argumentare": [],
+      "puncte_cheie": [
+        "Explici fiecare examinare înainte să o faci.",
+        "Planul de travaliu se revede când situația se schimbă."
+      ]
+    },
+    {
+      "titlu": "Măsuri generale și monitorizarea maternă",
+      "intro": "Pacienta fictivă bea lichide limpezi și se mișcă liber. Monitorizarea maternă caută din timp tensiunea mare și febra.",
+      "recomandari": [
+        "P9",
+        "P10",
+        "P11"
+      ],
+      "explicatii": [
+        {
+          "ref": "P10",
+          "text": "O singură valoare mare a tensiunii diastolice ajunge ca să chemi medicul de gardă. Nu aștepți altă măsurare ca să confirmi valoarea."
+        },
+        {
+          "ref": "P11",
+          "text": "Febra la o singură măsurare este semn de alarmă. O raportezi imediat, chiar dacă pacienta se simte bine."
+        }
+      ],
+      "argumentare": [],
+      "puncte_cheie": [
+        "Lichidele limpezi sunt permise.",
+        "Tensiunea diastolică mare cere medicul imediat.",
+        "Febra se raportează la prima măsurare."
+      ]
+    },
+    {
+      "titlu": "Monitorizarea fetală și faza de test",
+      "intro": "Monitorizarea fetală începe cu o întrebare despre mișcările fătului și continuă cu ascultarea cordului după contracție.",
+      "recomandari": [
+        "P12",
+        "P13",
+        "P14"
+      ],
+      "explicatii": [
+        {
+          "ref": "P12",
+          "text": "Asculți cordul fetal imediat după contracție, pentru că atunci se văd scăderile care contează."
+        },
+        {
+          "ref": "P13",
+          "text": "O frecvență în afara intervalului din ghid înseamnă că anunți medicul, care decide dacă treci la monitorizare continuă."
+        }
+      ],
+      "argumentare": [],
+      "puncte_cheie": [
+        "Întrebi de mișcările fătului la internare.",
+        "Asculți cordul fetal după contracție.",
+        "Frecvența anormală se raportează medicului."
+      ]
+    }
+  ],
+  "cifre": [
+    {
+      "eticheta": "Intervalul despre care se întreabă mișcările fătului",
+      "ref": "P12",
+      "valoare": "24 de ore"
+    },
+    {
+      "eticheta": "Auscultarea activității cardiace fetale",
+      "ref": "P12",
+      "valoare": "cel puțin 1 minut"
+    },
+    {
+      "eticheta": "Tensiunea diastolică la o singură determinare",
+      "ref": "P10",
+      "valoare": "minim 110 mmHg"
+    },
+    {
+      "eticheta": "Temperatura la o singură determinare",
+      "ref": "P11",
+      "valoare": "38° C sau mai mare"
+    },
+    {
+      "eticheta": "Frecvența cardiacă fetală de alarmă",
+      "ref": "P13",
+      "valoare": "sub 110 sau peste 160 bpm"
+    }
+  ],
+  "perle": [
+    "Explici înainte să examinezi.",
+    "O singură valoare anormală ajunge ca să chemi medicul de gardă."
+  ],
+  "quiz": [
+    {
+      "intrebare": "Ce întrebi pacienta la internare despre făt?",
+      "ref": "P12"
+    },
+    {
+      "intrebare": "Ce valoare a tensiunii diastolice este semn de alarmă?",
+      "ref": "P10",
+      "comentariu": "O singură determinare ajunge."
+    },
+    {
+      "intrebare": "Ce faci cu o frecvență cardiacă fetală anormală?",
+      "ref": "P13"
+    }
+  ],
+  "rezumat_telegram": [
+    "Explici fiecare examinare și ceri acordul pacientei.",
+    "Tensiunea diastolică mare sau febra la o singură măsurare cer medicul de gardă.",
+    "Asculți cordul fetal imediat după contracție."
+  ]
+}

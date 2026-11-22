@@ -1,0 +1,13 @@
+{
+  "id": "demo-algoritm",
+  "title": "Algoritmul pentru febra de test",
+  "createdAt": 0,
+  "updatedAt": 0,
+  "pending": false,
+  "imported": false,
+  "sdkSessionId": null,
+  "messages": [
+    { "id": "demo-2a", "role": "user", "text": "Fă-mi un desen cu formele SFT, ca să le țin minte.", "images": [], "ts": 0, "urgent": false },
+    { "id": "demo-2b", "role": "assistant", "text": "Formele se deosebesc după **culoarea** și **întinderea** erupției:\n\n```mermaid\nflowchart TD\n  A[Erupție la o pacientă fictivă] --> B{Culoarea?}\n  B -->|verde| C[Forma atipică]\n  B -->|albastră| D{Câte antebrațe?}\n  D -->|unul| E[Forma ușoară]\n  D -->|ambele + febră| F[Forma severă: internare]\n```\n\nErupția fără febră te face să te gândești tot la forma atipică.\n\nSurse: Ghid fictiv de test 07 (Sindromul fictiv de test), p. 8", "images": [], "ts": 0, "urgent": false }
+  ]
+}

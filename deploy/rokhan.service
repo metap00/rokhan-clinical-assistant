@@ -1,0 +1,17 @@
+[Unit]
+Description=Rokhan app (127.0.0.1:8787, published to the tailnet with tailscale serve)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+# A user service: the app lives in ~/rokhan of the account that runs it.
+WorkingDirectory=%h/rokhan
+EnvironmentFile=%h/rokhan/.env
+ExecStart=/usr/local/bin/node server/index.mjs
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target
