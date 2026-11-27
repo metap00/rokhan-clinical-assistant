@@ -73,7 +73,7 @@ test('get() returns the printed lesson with cards that carry the guideline text'
   const rows = new Map(unit.blocuri.filter((b) => b.id).map((b) => [b.id, b]));
   for (const s of l.sectiuni) for (const c of [...s.carduri, ...s.argumentare]) {
     const b = rows.get(c.ref);
-    assert.equal(c.pagina, b.pagina_final ? `${b.pagina}–${b.pagina_final}` : String(b.pagina));
+    assert.equal(c.pagina, b.pagina_final ? `${b.pagina}-${b.pagina_final}` : String(b.pagina));
     assert.equal(c.grad, b.grad || null);
     // html is the guideline's own text: stripping the marks gives the text back, escaped
     assert.equal(c.html.replaceAll('<mark>', '').replaceAll('</mark>', ''), b.text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'));
@@ -306,5 +306,5 @@ test('sectionSummary keeps acronyms the unit writes in capitals, lowercases the 
     { tip: 'row', text: 'Nu se folosește pentru evaluarea RCIU.' },
     { tip: 'row', text: '(RECOMANDARE DE BUNĂ PRACTICĂ) Alt text.' },
   ];
-  assert.equal(sectionSummary(blocks), '6 Instrumente de diagnostic și supraveghere a cazurilor cu RCIU (6.1–6.2) → 7 Conduita în RCIU precoce (7.1)');
+  assert.equal(sectionSummary(blocks), '6 Instrumente de diagnostic și supraveghere a cazurilor cu RCIU (6.1-6.2) → 7 Conduita în RCIU precoce (7.1)');
 });

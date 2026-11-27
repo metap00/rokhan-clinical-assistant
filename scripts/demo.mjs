@@ -9,11 +9,20 @@ import path from 'node:path';
 import { loadConfig, ROOT } from '../server/config.mjs';
 import { startServer } from '../server/index.mjs';
 import { getRegistru } from '../server/store/registru.mjs';
+import { getVideoteca } from '../server/store/videoteca.mjs';
+import { getCitit } from '../server/store/citit.mjs';
 import { todayString, addDays } from '../server/lessons/sogr/state.mjs';
 
 const dataDir = fs.mkdtempSync(path.join(os.tmpdir(), 'rokhan-demo-'));
 fs.cpSync(path.join(ROOT, 'demo'), dataDir, { recursive: true });
-const config = loadConfig({ ...process.env, ROKHAN_DATA_DIR: dataDir, ROKHAN_FAKE_LLM: '1', ROKHAN_PASSWORD: process.env.ROKHAN_PASSWORD || 'demo' });
+// A placeholder push contact, so the notification settings show. The demo runs no jobs: nothing is sent on its own.
+const config = loadConfig({
+  ...process.env,
+  ROKHAN_DATA_DIR: dataDir,
+  ROKHAN_FAKE_LLM: '1',
+  ROKHAN_PASSWORD: process.env.ROKHAN_PASSWORD || 'demo',
+  ROKHAN_PUSH_CONTACT: process.env.ROKHAN_PUSH_CONTACT || 'https://example.org',
+});
 const today = todayString(config.tz);
 const day = (n) => addDays(today, -n);
 const writeJson = (rel, obj) => fs.writeFileSync(path.join(dataDir, rel), JSON.stringify(obj, null, 2) + '\n');
@@ -49,6 +58,18 @@ for (const e of [
   { row: 'sutura-rupturi', n: 1, date: day(3) },
   { row: 'garzi', n: 1, date: day(1) },
 ]) registru.addEntry(e);
+
+// Videotecă: the first two "Start aici" films and one film about the uncomplicated birth are ticked.
+const videoteca = getVideoteca(config);
+const catalog = videoteca.catalog();
+const birth = catalog.sections.flatMap((s) => s.procedures).find((p) => p.name_ro === 'Asistența nașterii necomplicate');
+for (const v of [...catalog.start_here.slice(0, 2), ...(birth?.videos.slice(0, 1) ?? [])]) videoteca.setSeen(v.url, true);
+
+// Ghiduri: the first guideline is read, the second is half way, and she stopped in its second section.
+const citit = getCitit(config);
+citit.tick('01', { citit: true });
+for (const sectiune of [0, 1]) citit.tick('07', { sectiune, citita: true });
+citit.setLast({ nr: '07', sectiune: 1, scroll: 0.35 });
 
 const { url, close } = await startServer(config);
 console.log(`[rokhan demo] ${url}  password: ${config.password}  (fake model, data in ${dataDir})`);

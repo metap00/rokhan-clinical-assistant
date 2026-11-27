@@ -64,7 +64,7 @@ function setup() {
   const sent = [];
   const push = getPush(config, { sender: async (s, payload) => { sent.push(JSON.parse(payload)); } });
   push.addSubscription({ endpoint: 'https://push.example.com/send/1', keys: { p256dh: 'BPk-abc_123', auth: 'au-th_9' } });
-  push.setSettings({ activ: true, ora: '07:00' });
+  push.setSettings({ activ: true, ora: '07:00', film: false }); // the film line has its own tests (videoteca.test.mjs)
   return { sent, run: (l, hhmm = '07:00') => runDailyPush({ config, lessons: l, now: at(hhmm) }) };
 }
 

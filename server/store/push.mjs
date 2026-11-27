@@ -1,13 +1,16 @@
 // Web push: the VAPID keys, the subscriptions, the settings, and the daily lesson nudge.
 // Files: <dataDir>/vapid.json (key pair) and <dataDir>/push.json { setari, abonamente, ultimaTrimitere }.
+// With the "Filmul zilei" setting on, the nudge also names the next unwatched video (the tap still opens the
+// lesson). On a day with no lesson to announce the film goes alone, and the tap opens it.
 import path from 'node:path';
 import * as webpush from 'web-push';
-import { readJson, writeJsonAtomic, httpError } from './files.mjs';
+import { readJson, writeJsonAtomic, httpError, plainDashes } from './files.mjs';
+import { getVideoteca } from './videoteca.mjs';
 
 export const TTL_SECONDS = 6 * 3600;
 export const MAX_SUBSCRIPTIONS = 10; // one person, a few devices
 export const LATEST_HOUR = '23:00'; // the daily nudge is never sent from this time on (owner asked for evening times, 2026-11-22)
-const DEFAULTS = { activ: false, ora: '07:00', raspuns: true }; // raspuns: "the answer is ready" when she left the app
+const DEFAULTS = { activ: false, ora: '07:00', raspuns: true, film: true }; // raspuns: "the answer is ready" when she left the app
 
 /** A real push service address: https, a named host (never an IP or localhost), a sane length. */
 function validEndpoint(e) {
@@ -78,17 +81,19 @@ export function getPush(config, { sender } = {}) {
 
     info() {
       const s = load();
-      return { configurat: configured(), cheie: api.publicKey(), activ: s.setari.activ, ora: s.setari.ora, raspuns: s.setari.raspuns, abonamente: s.abonamente.length };
+      return { configurat: configured(), cheie: api.publicKey(), activ: s.setari.activ, ora: s.setari.ora, raspuns: s.setari.raspuns, film: s.setari.film, abonamente: s.abonamente.length };
     },
 
-    setSettings({ activ, ora, raspuns } = {}) {
+    setSettings({ activ, ora, raspuns, film } = {}) {
       if (activ !== undefined && typeof activ !== 'boolean') throw httpError(400, 'activ');
       if (ora !== undefined && !validHora(ora)) throw httpError(400, 'ora');
       if (raspuns !== undefined && typeof raspuns !== 'boolean') throw httpError(400, 'raspuns');
+      if (film !== undefined && typeof film !== 'boolean') throw httpError(400, 'film');
       update((s) => {
         if (activ !== undefined) s.setari.activ = activ;
         if (ora !== undefined) s.setari.ora = ora;
         if (raspuns !== undefined) s.setari.raspuns = raspuns;
+        if (film !== undefined) s.setari.film = film;
       });
       return api.info();
     },
@@ -160,20 +165,43 @@ export async function runDailyPush({ config, lessons, now = new Date(), log = ()
     const status = lessons.status();
     const due = status.repetitie?.scadente ?? 0; // quiz questions of the spaced review due today
     const reviewNote = { title: 'De repetat azi', body: `${due} ${due === 1 ? 'întrebare' : 'întrebări'} din lecturile citite.` };
-    let note;
-    if (status.citite[0]?.data === date) { // she read one today: no lesson nudge, only the reviews if any are due
-      if (!due) { push.markSent(date); return 'citita deja'; }
-      note = reviewNote;
+    const readToday = status.citite[0]?.data === date; // then no lesson nudge, only the reviews if any are due
+    let note = null;
+    if (readToday) {
+      if (due) note = reviewNote;
     } else if (sunday && status.recap.disponibil) {
       note = { title: 'Recapitularea săptămânii', body: 'Punctele-cheie din lecturile ultimei săptămâni.' };
     } else {
       const next = status.urmatoarea;
-      if (!next && !due) return null; // the plan is finished
       if (next && !next.scrisa) { lessons.requestGenerate(next.id); return null; } // ask the writer, try again on the next tick
-      note = next ? { title: 'Lectura de azi', body: `${next.ghid.titlu}: ${next.titlu} (cam ${next.minute} minute)` } : reviewNote;
+      if (next) note = { title: 'Lectura de azi', body: `${next.ghid.titlu}: ${next.titlu} (cam ${next.minute} minute)` };
+      else if (due) note = reviewNote;
     }
-    if (due && note !== reviewNote) note = { ...note, body: `${note.body} · ${due} ${due === 1 ? 'întrebare' : 'întrebări'} de repetat` };
-    const r = await push.sendAll({ ...note, url: '/#/lecturi' }, (e) => log('eroare', String(e?.message ?? e).slice(0, 200)));
+    if (note && due && note !== reviewNote) note = { ...note, body: `${note.body} · ${due} ${due === 1 ? 'întrebare' : 'întrebări'} de repetat` };
+
+    let film = null;
+    let filmFailed = false;
+    if (st.setari.film) {
+      try {
+        film = getVideoteca(config).filmOfDay();
+      } catch (e) {
+        filmFailed = true;
+        log('eroare', `filmul zilei: ${String(e?.message ?? e).slice(0, 200)}`); // the lesson nudge still goes out
+      }
+    }
+    const filmText = film && `${film.title}${film.duration ? ` (${film.duration})` : ''}`;
+    let url = '/#/lecturi';
+    if (note) {
+      if (film) note = { ...note, body: `${note.body}\nFilmul zilei: ${filmText}` };
+    } else if (film) {
+      note = { title: 'Filmul zilei', body: filmText };
+      url = `/#/videoteca?v=${encodeURIComponent(film.url)}`;
+    } else {
+      // Nothing to say. A day she read, or a file that cannot be read, is closed: not tried again every minute.
+      if (readToday || filmFailed) push.markSent(date);
+      return readToday ? 'citita deja' : null;
+    }
+    const r = await push.sendAll({ title: note.title, body: plainDashes(note.body), url }, (e) => log('eroare', String(e?.message ?? e).slice(0, 200)));
     push.markSent(date); // one attempt a day: a failing push service must not be hammered every minute
     log(r.trimise ? 'ok' : 'eroare', `${note.title}: trimise=${r.trimise} esuate=${r.esuate}`);
     return `trimis ${r.trimise}/${r.trimise + r.esuate}`;

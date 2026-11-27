@@ -29,7 +29,7 @@ const TIP = {
   'Opțiune': { tip: 'optiune', eticheta: 'Opțiune' },
   Argumentare: { tip: 'argumentare', eticheta: 'Argumentare' },
 };
-const pageLabel = (b) => (b.pagina_final && b.pagina_final !== b.pagina ? `${b.pagina}–${b.pagina_final}` : String(b.pagina));
+const pageLabel = (b) => (b.pagina_final && b.pagina_final !== b.pagina ? `${b.pagina}-${b.pagina_final}` : String(b.pagina));
 
 /** A block of a unit as a card for the browser; `html` is the guideline's own text, escaped, with numbers and units marked. */
 function card(block, explicatie = null) {

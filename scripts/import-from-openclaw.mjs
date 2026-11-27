@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { pathToFileURL } from 'node:url';
-import { writeJsonAtomic, writeTextAtomic, readJson } from '../server/store/files.mjs';
+import { writeJsonAtomic, writeTextAtomic, readJson, plainDashes } from '../server/store/files.mjs';
 import { DELETED_IMPORTED } from '../server/store/conversations.mjs';
 import { seedRows, findRow, newRow, summarize, COUNTED, ROLES } from '../server/store/registru.mjs';
 
@@ -152,7 +152,7 @@ export function importRegistru(md, { now = Date.now() } = {}) {
       for (const [k, v] of [['efectuat', full[2]], ['ajutat', full[3]], ['observat', full[4]]]) {
         if (Number(v) !== got[k]) errors.push(`${row.nume} ${k}: page ${v}, computed ${got[k]}`);
       }
-      if (full[5] != null && full[5].trim() !== row.barem) errors.push(`${row.nume} barem: page "${full[5].trim()}", seed "${row.barem}"`);
+      if (full[5] != null && plainDashes(full[5].trim()) !== row.barem) errors.push(`${row.nume} barem: page "${full[5].trim()}", seed "${row.barem}"`);
     } else {
       const total = ROLES.reduce((a, k) => a + got[k], 0);
       if (Number(plain[2]) !== total) errors.push(`${row.nume}: page ${plain[2]}, computed ${total}`);

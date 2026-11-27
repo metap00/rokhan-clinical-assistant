@@ -13,7 +13,7 @@ test('seed rows, in order, with tinta = lowest number in the barem', () => {
   assert.equal(rows.length, 17);
   assert.equal(rows[0].id, 'nastere-vaginala');
   assert.equal(rows.at(-1).id, 'garzi');
-  assert.deepEqual(rows.find((r) => r.id === 'cezariana-urgenta'), { id: 'cezariana-urgenta', nume: 'Cezariană în urgență', barem: 'min. 10–15', tinta: 10 });
+  assert.deepEqual(rows.find((r) => r.id === 'cezariana-urgenta'), { id: 'cezariana-urgenta', nume: 'Cezariană în urgență', barem: 'min. 10-15', tinta: 10 });
   assert.equal(rows.find((r) => r.id === 'forceps').tinta, 0);
   assert.equal(rows.find((r) => r.id === 'garzi').tinta, null);
   assert.equal(tintaOf('15–20'), 15);
@@ -105,6 +105,19 @@ test('export: one line per entry, oldest first, date range', () => {
   r.addEntry({ row: 'cezariana', date: '2026-11-21' });
   r.addEntry({ row: 'nastere-vaginala', n: 2, date: '2026-11-20' });
   r.addEntry({ row: 'cerclaj', rol: 'observat', date: '2026-10-01' });
-  assert.equal(r.exportText(), '2026-10-01 – Cerclaj ×1 – observat\n2026-11-20 – Naștere vaginală ×2 – efectuat\n2026-11-21 – Cezariană ×1 – efectuat');
-  assert.equal(r.exportText({ from: '2026-11-01', to: '2026-11-20' }), '2026-11-20 – Naștere vaginală ×2 – efectuat');
+  assert.equal(r.exportText(), '2026-10-01 - Cerclaj ×1 - observat\n2026-11-20 - Naștere vaginală ×2 - efectuat\n2026-11-21 - Cezariană ×1 - efectuat');
+  assert.equal(r.exportText({ from: '2026-11-01', to: '2026-11-20' }), '2026-11-20 - Naștere vaginală ×2 - efectuat');
+});
+
+test('a logbook stored with long dashes reads with plain hyphens, and a name typed either way finds its row', () => {
+  const config = makeConfig();
+  const long = (s) => s.replace('-', String.fromCharCode(0x2013));
+  const rows = seedRows().map((r) => ({ ...r, nume: long(r.nume), barem: long(r.barem) }));
+  fs.writeFileSync(path.join(config.dataDir, 'registru.json'), JSON.stringify({ rows, entries: [] }));
+  const r = getRegistru(config);
+  const row = r.summary().rows.find((x) => x.id === 'sutura-rupturi');
+  assert.deepEqual([row.nume, row.barem, row.tinta], ['Sutură rupturi perineale gr. 1-3', 'min. 10-15', 10]);
+  for (const name of [long('Sutură rupturi perineale gr. 1-3'), 'Sutură rupturi perineale gr. 1-3']) {
+    assert.equal(r.addEntry({ row: name }).row, 'sutura-rupturi', name);
+  }
 });

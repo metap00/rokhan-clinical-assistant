@@ -42,7 +42,7 @@ test('every push route needs the session', async () => {
 test('GET /api/push: configured, the public key, off, 07:00, no subscriptions', async () => {
   const r = await t.api('GET', '/api/push');
   assert.equal(r.status, 200);
-  assert.deepEqual({ ...r.json, cheie: typeof r.json.cheie }, { configurat: true, cheie: 'string', activ: false, ora: '07:00', raspuns: true, abonamente: 0 });
+  assert.deepEqual({ ...r.json, cheie: typeof r.json.cheie }, { configurat: true, cheie: 'string', activ: false, ora: '07:00', raspuns: true, film: true, abonamente: 0 });
 });
 
 test('subscribe, settings, test, unsubscribe', async () => {

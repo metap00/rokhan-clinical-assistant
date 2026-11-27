@@ -6,6 +6,7 @@ import { Chat } from './views/chat.js';
 import { Registru, flushOutbox } from './views/registru.js';
 import { Lecturi } from './views/lecturi.js';
 import { Ghiduri } from './views/ghiduri.js';
+import { Videoteca } from './views/videoteca.js';
 import { MaiMult } from './views/mai-mult.js';
 
 const TABS = [
@@ -13,6 +14,7 @@ const TABS = [
   ['registru', 'Registru', 'registru', Registru],
   ['lecturi', 'Lecturi', 'lecturi', Lecturi],
   ['ghiduri', 'Ghiduri', 'ghiduri', Ghiduri],
+  ['videoteca', 'Videotecă', 'video', Videoteca],
   ['mai-mult', 'Mai mult', 'more', MaiMult],
 ];
 

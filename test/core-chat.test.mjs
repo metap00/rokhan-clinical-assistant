@@ -228,7 +228,7 @@ describe('chat over HTTP with the fake agent', () => {
     r = await s.api('PATCH', `/api/registru/entries/${r.json.entry.id}`, { copii: 2 });
     assert.equal(r.json.registru.copii.total, 2);
     r = await s.api('GET', '/api/registru/export?from=2026-11-01&to=2026-11-01');
-    assert.deepEqual(r.json, { text: '2026-11-01 – Cezariană ×1 – efectuat' });
+    assert.deepEqual(r.json, { text: '2026-11-01 - Cezariană ×1 - efectuat' });
     r = await s.api('POST', '/api/registru/rows', { nume: 'Amniocenteză', barem: '5' });
     assert.equal(r.json.row.id, 'amniocenteza');
     r = await s.api('POST', '/api/registru/entries', { row: 'cerclaj', date: '2099-01-01' });

@@ -97,7 +97,7 @@ function Overview() {
   </section>`;
 }
 
-// ---- Notificări: the daily lesson through web push (server: /api/push) ----
+// ---- Notificări: the daily lesson and the film of the day through web push (server: /api/push) ----
 
 const isIos = () => /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const isInstalled = () => navigator.standalone === true || matchMedia('(display-mode: standalone)').matches;
@@ -199,6 +199,15 @@ function Notificari() {
     }
   }
 
+  // Needs no subscription of its own: it only adds a line to the daily nudge.
+  async function setFilm(film) {
+    try {
+      setInfo(await api('/push/setari', { method: 'PUT', body: { film } }));
+    } catch (e) {
+      fail(e);
+    }
+  }
+
   let body;
   if (info === null) body = html`<p class="muted small">Se încarcă…</p>`;
   else if (info === false) body = html`<p class="muted small">Starea notificărilor nu se încarcă. Verifică conexiunea.</p>`;
@@ -210,9 +219,11 @@ function Notificari() {
     const on = info.activ && !!sub;
     const answerOn = info.raspuns && !!sub;
     body = html`<label class="check"><input type="checkbox" role="switch" checked=${on} disabled=${busy} onChange=${() => toggle('activ', !on)} />Lectura zilnică</label>
-      <p class="muted small">O notificare dimineața, care deschide lectura de azi. Duminica: recapitularea săptămânii. Nu vine dacă ai citit deja o lectură în ziua aceea.</p>
+      <p class="muted small">O notificare pe zi, cu lectura de azi. Duminica: recapitularea săptămânii. Lectura nu vine dacă ai citit deja una în ziua aceea.</p>
       <label for="notif-ora">La ce oră</label>
       <input id="notif-ora" type="time" value=${info.ora} max="22:59" onChange=${(e) => setTime(e.target.value)} />
+      <label class="check"><input type="checkbox" role="switch" checked=${info.film} onChange=${() => setFilm(!info.film)} />Filmul zilei</label>
+      <p class="muted small">Pune următorul film nevăzut în capul Videotecii și în notificarea zilnică. În zilele fără lectură, notificarea are numai filmul și atingerea ei îl deschide.${on ? '' : ' Vine numai cu lectura zilnică pornită.'}</p>
       <label class="check"><input type="checkbox" role="switch" checked=${answerOn} disabled=${busy} onChange=${() => toggle('raspuns', !answerOn)} />Anunță-mă când răspunsul e gata</label>
       <p class="muted small">Vine doar dacă ai ieșit din aplicație cât timp Rokhan încă scria.</p>
       <div class="row"><button class="btn" type="button" disabled=${busy || !sub} onClick=${test}>Trimite un test</button></div>`;

@@ -36,7 +36,7 @@ function setup({ activ = true, ora = '07:00', subs = 1, fail = () => null } = {}
     },
   });
   for (let i = 1; i <= subs; i++) push.addSubscription(sub(i));
-  push.setSettings({ activ, ora });
+  push.setSettings({ activ, ora, film: false }); // the film line has its own tests (videoteca.test.mjs)
   const run = (lessons, now) => runDailyPush({ config, lessons, now, log: (status, detail) => logs.push(`${status} ${detail}`) });
   return { config, push, sent, logs, run };
 }

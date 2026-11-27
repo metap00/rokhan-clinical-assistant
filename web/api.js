@@ -62,6 +62,13 @@ export function askRokhan(text) {
 
 export const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// Calls fn each time the app comes back to the front. Returns the function that stops it.
+export function onVisible(fn) {
+  const run = () => document.visibilityState === 'visible' && fn();
+  document.addEventListener('visibilitychange', run);
+  return () => document.removeEventListener('visibilitychange', run);
+}
+
 export async function copyText(text) {
   try {
     await navigator.clipboard.writeText(text);

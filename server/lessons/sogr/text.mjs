@@ -40,7 +40,7 @@ export const escapeHtml = (s) =>
 const isCaps = (w) => w.length >= 2 && w === w.toUpperCase() && w !== w.toLowerCase();
 
 /**
- * "1 Introducere → 5 Evaluare (5.1–5.3)" from the unit's headings. A shouted heading becomes sentence case,
+ * "1 Introducere → 5 Evaluare (5.1-5.3)" from the unit's headings. A shouted heading becomes sentence case,
  * but an acronym (all capitals, at most 6 letters) stays when the unit's own text writes it that way on its own
  * (RCIU, HIV, CTG), as opposed to inside a shouted phrase. Short words like "ȘI" or "CU" are told apart that way.
  */
@@ -69,7 +69,7 @@ export function sectionSummary(blocks) {
     return h ? `${h.num} ${h.text}` : '';
   }
   return parts.map((p) => {
-    if (p.subs.length > 1) return `${p.label} (${p.subs[0]}–${p.subs[p.subs.length - 1]})`;
+    if (p.subs.length > 1) return `${p.label} (${p.subs[0]}-${p.subs[p.subs.length - 1]})`;
     if (p.subs.length === 1) return `${p.label} (${p.subs[0]})`;
     return p.label;
   }).join(' → ');

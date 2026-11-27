@@ -54,6 +54,9 @@ export function countWord(n, one, many) {
   return `${n} ${r === 0 && n !== 0 || r >= 20 ? 'de ' : ''}${many}`;
 }
 
+// Page ranges come from the guide files with long dashes: shown with a plain hyphen.
+export const plainDashes = (s) => String(s ?? '').replace(/[\u2013\u2014]/g, '-');
+
 // First and last day of a month, offset months from the one containing `today`.
 export function monthRange(today, offset = 0) {
   const [y, m] = today.split('-').map(Number);

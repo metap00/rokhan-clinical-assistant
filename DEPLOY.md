@@ -50,8 +50,11 @@ Any reverse proxy with TLS works the same way; keep `HOST=127.0.0.1` so the app 
 ## 4. Data and backups
 
 Everything lives in `data/` (or `ROKHAN_DATA_DIR`): the logbook, memory pages, conversations, uploaded photos,
-lessons, the guideline library and the cookie signing key. Files are created mode `600`. Back up that folder;
+lessons, the guideline library, reading and watching ticks and the cookie signing key. Files are created mode `600`. Back up that folder;
 deleting `secret.key` logs every session out.
 
 The guideline library is not part of this repository (the source guidelines are copyrighted). `npm run demo`
 shows the expected layout with an invented guideline in `demo/library/`.
+
+The video catalog ships in `content/videoteca.json`. A file at `data/library/videoteca.json` wins over it and is read
+again when it changes, without a restart.

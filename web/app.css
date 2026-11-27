@@ -1016,7 +1016,7 @@ p, li { text-wrap: pretty; }
 .tabs {
   flex: none;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   background: var(--tabs-bg);
   border-top: var(--tabs-rule);
   padding: 0 max(env(safe-area-inset-left), calc((100% - var(--col)) / 2)) var(--safe-b) max(env(safe-area-inset-right), calc((100% - var(--col)) / 2));
@@ -1024,7 +1024,7 @@ p, li { text-wrap: pretty; }
 .tab {
   min-height: 56px;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
-  color: var(--tab-ink); text-decoration: none; font-size: 0.72rem; font-weight: 550; line-height: 1.1;
+  color: var(--tab-ink); text-decoration: none; font-size: min(0.72rem, 3.1vw); font-weight: 550; line-height: 1.1; /* six tabs: large text stops growing here */
   transition: transform 0.1s ease-out;
 }
 .tab[aria-current="page"] { color: var(--tab-on-ink); background: var(--tab-on-bg); box-shadow: var(--tab-on-mark); font-weight: var(--fw-tab-on); }
@@ -1385,7 +1385,7 @@ input[role="switch"]:disabled { opacity: 0.5; }
 .quick-row { display: grid; grid-template-columns: 1fr 60px; gap: 8px; }
 .quick .more { padding: 0; }
 .rows { list-style: none; margin: 0; padding: 0; }
-.rows li { padding: 10px 0; border-bottom: 1px solid var(--line); }
+.rows > li { padding: 10px 0; border-bottom: 1px solid var(--line); }
 .rows-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-weight: var(--fw-strong); }
 .rows-n { font-family: var(--font-num); font-size: var(--fs-num); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .rows-n .muted { font-weight: 400; }
@@ -1484,6 +1484,46 @@ div.next { padding: var(--next-pad); }
 .sec-nav .btn span { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 .sec-nav .btn.next { justify-content: flex-end; text-align: right; margin: 0; }
 .flip { display: inline-flex; transform: scaleX(-1); flex: none; }
+
+/* ---------- Videotecă and the reading checklist ---------- */
+.progress-line p { margin: 14px 0 0; font-weight: var(--fw-strong); font-variant-numeric: tabular-nums; }
+.vlib .search { position: relative; } /* scrolls away with the page, and keeps its icon inside */
+.vlib .search .ico { left: calc(var(--page-pad) + 12px); }
+.vfilters { display: flex; flex-wrap: wrap; column-gap: 20px; }
+.vparts { margin-top: 12px; }
+.vproc { margin-top: 24px; scroll-margin-top: calc(var(--bar-h) + var(--safe-t) + 8px); }
+.vproc-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.vproc-head h3 { margin: 0; min-width: 0; font-size: 1.1rem; }
+.vproc-head .tag { flex: none; margin: 0; white-space: nowrap; }
+.vreg { margin: 6px 0 0; font-weight: var(--fw-strong); font-variant-numeric: tabular-nums; }
+.vids { list-style: none; margin: 8px 0 0; padding: 0; overflow-wrap: anywhere; }
+.vid { padding: 10px 0 4px; border-top: var(--row-rule); scroll-margin-top: calc(var(--bar-h) + var(--safe-t) + 8px); }
+.vid.target { margin-left: -12px; padding-left: 8px; border-left: 4px solid var(--hot); }
+.vid-link { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-weight: var(--fw-strong); text-decoration: none; overflow-wrap: anywhere; }
+.vid-title { min-width: 0; }
+.vid.seen .vid-link { color: var(--muted); }
+.vid-dur { flex: none; color: var(--muted); font-family: var(--font-num); font-size: 0.88rem; font-weight: 400; font-variant-numeric: tabular-nums; }
+.vid-meta { margin: 2px 0 0; color: var(--muted); font-size: 0.84rem; }
+.vid-text { margin: 6px 0 0; font-size: 0.94rem; }
+.vid-caveat { margin: 4px 0 0; color: var(--muted); font-size: 0.86rem; }
+.vid-caveat b { color: var(--danger); font-weight: var(--fw-strong); }
+.vid-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; min-height: 44px; }
+.vid-foot .tag { margin: 0; }
+.tag.gate { background: transparent; color: var(--danger); box-shadow: inset 0 0 0 1px var(--danger); }
+.vid-seen { margin: 0 0 0 auto; padding-left: 8px; }
+.plain { margin: 8px 0; padding-left: 1.2em; overflow-wrap: anywhere; }
+.plain li { margin: 8px 0; }
+.rows-films { margin-top: 4px; }
+.rows-proc { display: block; padding: 8px 0 2px; font-weight: var(--fw-strong); }
+.resume { margin-top: 4px; }
+.read-state { display: flex; align-items: center; gap: 4px; color: var(--muted); font-size: 0.84rem; font-variant-numeric: tabular-nums; }
+.read-state.done { color: var(--ink); font-weight: var(--fw-strong); }
+.read-state .ico { width: 16px; height: 16px; color: var(--ok); }
+.progress-line + .list { margin-top: 8px; }
+.toc-row { display: flex; align-items: stretch; }
+.toc-row .list-item { flex: 1; min-width: 0; }
+.toc-tick { flex: none; display: grid; place-items: center; min-width: 44px; margin: 0; cursor: pointer; }
+.read-check { margin-top: 24px; }
 
 /* ---------- Mai mult ---------- */
 .ga-out { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }

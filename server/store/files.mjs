@@ -43,6 +43,9 @@ export function fold(s) {
     .trim();
 }
 
+// UI text carries no en dash or em dash: a plain hyphen instead.
+export const plainDashes = (s) => String(s ?? '').replace(/[\u2013\u2014]/g, '-');
+
 // 'YYYY-MM-DD' of the given instant in the given IANA time zone.
 export function dayIn(tz, ms = Date.now()) {
   return new Intl.DateTimeFormat('en-CA', { timeZone: tz, year: 'numeric', month: '2-digit', day: '2-digit' }).format(ms);

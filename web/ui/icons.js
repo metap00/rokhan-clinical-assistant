@@ -23,6 +23,8 @@ const P = {
   search: 'M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM16 16l4 4',
   dots: 'M6 12h.01M12 12h.01M18 12h.01',
   down: 'M6 9l6 6 6-6',
+  video: 'M3 6h13v12H3zM16 10l5-3v10l-5-3',
+  check: 'M5 13l4 4L19 7',
 };
 
 export function Icon({ name }) {

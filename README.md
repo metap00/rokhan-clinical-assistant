@@ -2,7 +2,8 @@
 
 Rokhan is a phone-first web app for a first-year obstetrics and gynecology resident in Romania. It answers clinical
 questions from the Romanian (SOGR) guidelines with page-level sources, keeps her procedure logbook against the residency
-targets, turns the guidelines into short daily lessons with a quiz and spaced review, and remembers what she is studying.
+targets, turns the guidelines into short daily lessons with a quiz and spaced review, keeps a library of operation videos
+and remembers what she is studying.
 It replaced a Telegram bot she had been using, because a chat window could not hold a logbook, a guideline library or
 lessons. It was built for, and used by, one person; the code and the demo here contain no personal data and no
 guideline text (the guideline in the tests and the demo is invented).
@@ -26,9 +27,36 @@ All screenshots are from `npm run demo` with invented data. More in [`docs/scree
 - **Lecturi (Lessons)**: about seven minutes a day cut from one guideline, with the guideline's own text as cards, a
   three-question quiz, and a spaced-review session of past quiz questions.
 - **Ghiduri (Guidelines)**: full-text search across the library (diacritics-insensitive), tables of contents with pages,
-  and the source line ranges the assistant cited.
+  and the source line ranges the assistant cited. Guidelines and sections can be
+  ticked as read, and "Continuă de unde ai rămas" reopens the last place.
+- **Videotecă (Video library)**: a catalog of public operation videos by chapter and procedure, with search, filters,
+  "watched" ticks, the logbook count next to the procedure, and a film of the day.
 - **Mai mult (More)**: the memory pages the assistant keeps about her studies (editable), a gestational-age calculator,
-  three visual looks with light and dark themes, larger text, and a daily lesson notification.
+  three visual looks with light and dark themes, larger text, and a daily notification with the lesson and the film.
+
+## Videotecă, reading checklist and film of the day
+
+<p>
+  <img src="docs/screenshots/videoteca.png" width="200" alt="Video library: the film of the day, progress, search and filters">
+  <img src="docs/screenshots/videoteca-capitol.png" width="200" alt="A chapter: a procedure with its logbook count and watched ticks">
+  <img src="docs/screenshots/registru-filme.png" width="200" alt="Logbook row with its films opened in place">
+</p>
+<p>
+  <img src="docs/screenshots/ghiduri-continua.png" width="200" alt="Guidelines: continue where you left off, guidelines read">
+  <img src="docs/screenshots/ghid-cuprins.png" width="200" alt="A guideline's contents with ticked sections">
+  <img src="docs/screenshots/setari-filmul-zilei.png" width="200" alt="Notification settings with the film of the day switch">
+</p>
+
+- **Video library**: 302 public films for 119 procedures in 13 chapters, plus a "start here" list. The app links to the
+  publishers and embeds nothing. A newer catalog file in the data folder replaces the shipped one without a restart.
+- **One source of truth for ticks**: watched films and read sections are stored on the server, keyed by film address
+  and by section number and title, so both survive a new catalog or a re-imported library.
+- **Logbook link**: an explicit table maps logbook rows to catalog procedures, and a test fails if a name drifts.
+- **Film of the day**: the next unwatched film, one extra line in the daily notification, or alone on a day without a
+  lesson. A switch turns it off. A broken catalog never blocks the lesson notification.
+
+The logbook entries and guideline titles in these screenshots are the demo's invented data; the films are real public
+videos. Details: [`docs/videoteca.md`](docs/videoteca.md).
 
 ## Architecture
 
@@ -37,7 +65,7 @@ All screenshots are from `npm run demo` with invented data. More in [`docs/scree
 - **Claude Agent SDK, locked down**: no settings, skills, plugins or hooks; only web search and the app's own in-process
   tools (library, logbook, memory, lessons, a guarded URL fetcher). The SDK's `init` message is checked on every turn.
 - **A PWA without a build step**: Preact and htm as vendored ES modules, a service worker, an IndexedDB outbox.
-- **Web Push** (VAPID) for the daily lesson.
+- **Web Push** (VAPID) for the daily lesson and the film of the day.
 - **Deployment**: a systemd user service on a small Linux server, published to her phone with Tailscale Serve.
 
 ```mermaid
@@ -66,7 +94,7 @@ deployment, and getting it onto the phone of the one person it was built for.
 
 ## Engineering highlights
 
-- **282 automated tests** (`npm test`, Node's built-in runner, no test framework). One checks POSIX file modes and is
+- **314 automated tests** (`npm test`, Node's built-in runner, no test framework). One checks POSIX file modes and is
   skipped on Windows.
 - **Security review**: an independent review found 19 issues (2 high, 5 medium, 12 low), among them a login throttle
   that trusted a client header, cookies that survived logout, a page that could freeze the server, and SSRF gaps in the
@@ -95,7 +123,7 @@ npm run demo        # http://127.0.0.1:8787, password: demo
 ```
 
 `npm run demo` copies [`demo/`](demo/) (an invented guideline, two lessons, memory pages, two conversations) to a fresh
-temporary folder, fills the logbook, and starts the app with a fake model (`ROKHAN_FAKE_LLM=1`): no API key, no
+temporary folder, fills the logbook, ticks a few films and sections, and starts the app with a fake model (`ROKHAN_FAKE_LLM=1`): no API key, no
 network, no private data. In the chat, a message with "desen" gets a diagram, "eroare" shows the usage-limit card.
 
 With the real model: `cp .env.example .env`, set `ROKHAN_PASSWORD`, log the Claude Agent SDK in on the machine, then
@@ -111,7 +139,8 @@ format. `npm run eval` sends a question set through the real assistant and recor
 
 ## Licence
 
-The code is MIT ([`LICENSE`](LICENSE)). Vendored libraries keep their licences in
+The code is MIT ([`LICENSE`](LICENSE)). The video catalog ([`content/videoteca.json`](content/videoteca.json)) links to
+films on their publishers' sites; the films and their titles belong to their authors. Vendored libraries keep their licences in
 [`web/vendor/licenses/`](web/vendor/licenses/): Preact (MIT), htm (Apache-2.0), marked (MIT), DOMPurify (Apache-2.0 or
 MPL-2.0), Mermaid (MIT). Fonts in [`web/fonts/licenses/`](web/fonts/licenses/): Atkinson Hyperlegible Next, Source Sans 3,
 Courier Prime and Protest Strike, all under the SIL Open Font License 1.1.

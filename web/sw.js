@@ -1,7 +1,7 @@
 // Rokhan service worker: keeps the app shell and the vendored libraries for offline use.
 // Never touches /api (logbook, chat and lessons always go to the server).
 // Bump VERSION when web/ changes so old caches are dropped; test/web-sw.test.mjs checks SHELL.
-const VERSION = 'rokhan-2026-11-22-5';
+const VERSION = 'rokhan-2026-11-27-1';
 const SHELL = [
   '/',
   '/index.html',
@@ -19,14 +19,17 @@ const SHELL = [
   '/lib/outbox.js',
   '/lib/registru.js',
   '/lib/sse.js',
+  '/lib/videoteca.js',
   '/ui/crop.js',
   '/ui/icons.js',
   '/ui/markdown.js',
+  '/ui/progress.js',
   '/views/chat.js',
   '/views/ghiduri.js',
   '/views/lecturi.js',
   '/views/mai-mult.js',
   '/views/registru.js',
+  '/views/videoteca.js',
   '/fonts/atkinson-hyperlegible-next-latin-ext-wght-italic.woff2',
   '/fonts/atkinson-hyperlegible-next-latin-ext-wght-normal.woff2',
   '/fonts/atkinson-hyperlegible-next-latin-wght-italic.woff2',
@@ -64,7 +67,7 @@ self.addEventListener('activate', (e) => {
   );
 });
 
-// Web push (the daily lesson): the server sends { title, body, url }. A push must always show something.
+// Web push (the daily nudge): the server sends { title, body, url }. A push must always show something.
 self.addEventListener('push', (e) => {
   let d = {};
   try { d = e.data?.json() ?? {}; } catch { d = { body: e.data?.text() }; }

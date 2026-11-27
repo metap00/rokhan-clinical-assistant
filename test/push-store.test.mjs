@@ -11,7 +11,7 @@ const fresh = (over = {}, sender) => { const config = makeConfig({ pushContact: 
 test('defaults: off, 07:00, no subscriptions, and the public key is made once and kept in vapid.json', () => {
   const { config, push } = fresh();
   const a = push.info();
-  assert.deepEqual({ ...a, cheie: typeof a.cheie }, { configurat: true, cheie: 'string', activ: false, ora: '07:00', raspuns: true, abonamente: 0 });
+  assert.deepEqual({ ...a, cheie: typeof a.cheie }, { configurat: true, cheie: 'string', activ: false, ora: '07:00', raspuns: true, film: true, abonamente: 0 });
   const file = JSON.parse(fs.readFileSync(path.join(config.dataDir, 'vapid.json'), 'utf8'));
   assert.equal(file.publicKey, a.cheie);
   assert.ok(file.privateKey);
@@ -20,7 +20,7 @@ test('defaults: off, 07:00, no subscriptions, and the public key is made once an
 
 test('not configured without an https public origin or a contact: no key is made', () => {
   const { config, push } = fresh({ pushContact: null });
-  assert.deepEqual(push.info(), { configurat: false, cheie: null, activ: false, ora: '07:00', raspuns: true, abonamente: 0 });
+  assert.deepEqual(push.info(), { configurat: false, cheie: null, activ: false, ora: '07:00', raspuns: true, film: true, abonamente: 0 });
   assert.equal(fs.existsSync(path.join(config.dataDir, 'vapid.json')), false);
   assert.equal(fresh({ pushContact: null, publicOrigin: 'http://localhost:8787' }).push.configured(), false); // web-push rejects a non-https subject
   assert.equal(fresh({ pushContact: null, publicOrigin: 'https://rokhan.example.ts.net' }).push.configured(), true);

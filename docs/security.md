@@ -17,6 +17,7 @@ browser and refused again by the server, and the system prompt tells the assista
 | The fetcher reaches internal services (SSRF) | http/https only; every redirect hop is resolved and checked against private, loopback, link-local, CGNAT and the machine's own addresses; the connection is pinned to the checked address; size and time limits; PDF and HTML conversion in a worker thread with its own timeout, so one hostile page cannot freeze the server. |
 | The model writes something wrong | Memory pages keep their last 20 versions; logbook changes and deletions are appended to a history file. Lessons are validated against the guideline before anyone sees them. |
 | Model output rendered as HTML | Markdown is sanitised with DOMPurify; the Content-Security-Policy allows only same-origin scripts, styles, forms and connections, no framing. |
+| A replaced video catalog carries a hostile link | Only `http` and `https` addresses reach a link, films open outside the app with `noopener noreferrer`, and nothing is embedded. |
 | The SDK does more than intended | No setting sources, skills, plugins or hooks; only the app's own tools plus web search; the `init` message is checked every turn and the child process does not receive the app password. |
 | Data at rest | `umask 077`: files are readable by the service user only. Photos are deleted after an hour, SDK session transcripts after 30 days, logs after 90 days. Dotfiles and symlinks outside `web/` are never served. |
 

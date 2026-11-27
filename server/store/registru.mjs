@@ -1,19 +1,19 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import { readJson, writeJsonAtomic, httpError, fold, dayIn } from './files.mjs';
+import { readJson, writeJsonAtomic, httpError, fold, dayIn, plainDashes } from './files.mjs';
 
 const SEED = `
 nastere-vaginala | Naștere vaginală | 50
 cezariana | Cezariană | 20
-cezariana-uter-cicatricial | Cezariană pe uter cicatricial | 15–20
-cezariana-urgenta | Cezariană în urgență | min. 10–15
-ventuza | Ventuză obstetricală | 10–20
-forceps | Forceps / spatule | 0–10
+cezariana-uter-cicatricial | Cezariană pe uter cicatricial | 15-20
+cezariana-urgenta | Cezariană în urgență | min. 10-15
+ventuza | Ventuză obstetricală | 10-20
+forceps | Forceps / spatule | 0-10
 nastere-pelvina | Naștere în pelvină | 5
-epiziotomie | Epiziotomie / epiziorafie | min. 10–15
-sutura-rupturi | Sutură rupturi perineale gr. 1–3 | min. 10–15
-extractie-placenta | Extracție manuală / instrumentală de placentă | min. 10–15
+epiziotomie | Epiziotomie / epiziorafie | min. 10-15
+sutura-rupturi | Sutură rupturi perineale gr. 1-3 | min. 10-15
+extractie-placenta | Extracție manuală / instrumentală de placentă | min. 10-15
 cerclaj | Cerclaj | 3
 recoltare-cervico-vaginala | Recoltare probe cervico-vaginale | 50
 chiuretaj-biopsic | Chiuretaj biopsic | 15
@@ -43,9 +43,10 @@ export function seedRows() {
 
 // A row id or a free name, matched ignoring case and diacritics against ids and names.
 export function findRow(rows, name) {
-  const want = fold(name);
+  const key = (s) => fold(plainDashes(s));
+  const want = key(name);
   if (!want) return null;
-  return rows.find((r) => r.id === name) || rows.find((r) => fold(r.id) === want || fold(r.nume) === want) || null;
+  return rows.find((r) => r.id === name) || rows.find((r) => key(r.id) === want || key(r.nume) === want) || null;
 }
 
 function slugify(name, rows) {
@@ -58,7 +59,7 @@ function slugify(name, rows) {
 export function newRow(rows, nume, barem = '') {
   nume = String(nume ?? '').trim();
   if (!nume) throw httpError(400, 'nume_lipsa');
-  barem = String(barem ?? '').trim();
+  barem = plainDashes(barem).trim();
   return { id: slugify(nume, rows), nume, barem, tinta: tintaOf(barem) };
 }
 
@@ -130,7 +131,11 @@ export function getRegistru(config) {
 
 function createRegistru(config) {
   const file = path.join(config.dataDir, 'registru.json');
-  const load = () => readJson(file, null) ?? { rows: seedRows(), entries: [] };
+  // Rows saved before 2026-11-27 carry long dashes ("10–20"): read with a plain hyphen, saved so on the next write.
+  const load = () => {
+    const data = readJson(file, null) ?? { rows: seedRows(), entries: [] };
+    return { ...data, rows: data.rows.map((r) => ({ ...r, nume: plainDashes(r.nume), barem: plainDashes(r.barem) })) };
+  };
   const save = (data) => writeJsonAtomic(file, { rows: data.rows, entries: data.entries });
   // The old entry, before every change or deletion: a trace and a way back.
   const history = (action, entry) =>
@@ -204,7 +209,7 @@ function createRegistru(config) {
       return data.entries
         .filter((e) => (!from || e.date >= from) && (!to || e.date <= to))
         .sort((a, b) => a.date.localeCompare(b.date) || a.createdAt - b.createdAt)
-        .map((e) => `${e.date} – ${names.get(e.row) ?? e.row} ×${e.n} – ${e.rol}`)
+        .map((e) => `${e.date} - ${names.get(e.row) ?? e.row} ×${e.n} - ${e.rol}`)
         .join('\n');
     },
   };

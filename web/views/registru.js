@@ -1,12 +1,14 @@
 // Registru: the procedure logbook. One tap for a birth or a caesarean, everything else in a form.
 // Entries that cannot be posted for lack of network wait in an outbox kept in IndexedDB. Every entry gets
 // its id here, on the phone, so sending it again after a lost answer cannot add it twice.
-import { html, api, store, toast, bus, emit, isOffline, copyText } from '../api.js';
+import { html, api, store, toast, bus, emit, isOffline, copyText, onVisible } from '../api.js';
 import { useState, useEffect } from '../vendor/preact-hooks-11.2.0.mjs';
 import { isoDate, dayLabel, longDate, countWord, monthRange } from '../lib/format.js';
 import { withPending, milestoneCrossed, COUNTED } from '../lib/registru.js';
 import { makeItem, adopt, flush, idbStore, firstWorking } from '../lib/outbox.js';
+import { videosOf } from '../lib/videoteca.js';
 import { Icon } from '../ui/icons.js';
+import { VideoRow, useTicks } from './videoteca.js';
 
 const OLD_OUTBOX = 'registru-outbox'; // localStorage, before the outbox moved to IndexedDB
 // Fallback when IndexedDB is refused: the same list in localStorage.
@@ -58,6 +60,14 @@ export function Registru() {
   const readBox = () => ready.then(() => box.all()).then(setOutbox, () => {});
   const [form, setForm] = useState(null); // { mode: 'quick'|'other'|'edit', row?, entry? }
   const [all, setAll] = useState(false);
+  const [films, setFilms] = useState({}); // row id -> the procedures of the Videotecă that match it
+  const [openFilms, setOpenFilms] = useState(null);
+  const [seen, tick, setSeen] = useTicks();
+  useEffect(() => {
+    const loadFilms = () => api('/videoteca/registru').then((r) => (setFilms(r.randuri), setSeen(r.vazute)), () => {});
+    loadFilms();
+    return onVisible(loadFilms);
+  }, []);
 
   // The last summary is kept so the tab (and its + buttons) still work when the app starts offline.
   const load = () => api('/registru').then(
@@ -168,6 +178,7 @@ export function Registru() {
             <div class="rows-top"><span>${r.nume}</span><span class="rows-n">${r.efectuat}${r.tinta ? html`<span class="muted"> / ${r.tinta}</span>` : ''}</span></div>
             ${r.tinta ? html`<div class="bar-track" role="progressbar" aria-label=${r.nume} aria-valuemin="0" aria-valuemax=${r.tinta} aria-valuenow=${r.efectuat}><span style=${{ width: pct + '%' }} /></div>` : ''}
             <p class="rows-meta">${[r.barem && `barem ${r.barem}`, r.ajutat && `ajutat ${r.ajutat}`, r.observat && `observat ${r.observat}`].filter(Boolean).join(', ')}</p>
+            ${films[r.id] && html`<${RowFilms} procedures=${films[r.id]} open=${openFilms === r.id} onToggle=${() => setOpenFilms(openFilms === r.id ? null : r.id)} seen=${seen} tick=${tick} />`}
           </li>`;
         })}
       </ul>
@@ -194,6 +205,17 @@ export function Registru() {
       onSave=${async (entry, body) => (await save(entry, body)) && setForm(null)}
       onDelete=${(entry) => { setForm(null); entry.pending ? dropPending(entry.id) : remove(entry.id); }} />`}
   </section>`;
+}
+
+// The films of one logbook row: one tap shows them here, a procedure name opens it in the Videotecă.
+function RowFilms({ procedures, open, onToggle, seen, tick }) {
+  return html`<button class="link-btn" type="button" aria-expanded=${open} onClick=${onToggle}>
+      <${Icon} name="video" />${open ? 'Ascunde filmele' : countWord(videosOf(procedures).length, 'film', 'filme')}
+    </button>
+    ${open && procedures.map((p) => html`<div key=${p.name_ro} class="rows-films">
+      <a class="rows-proc" href=${`#/videoteca/capitol/${encodeURIComponent(p.capitol)}?p=${encodeURIComponent(p.name_ro)}`}>${p.name_ro}</a>
+      <ul class="vids">${p.videos.map((v) => html`<${VideoRow} key=${v.url} v=${v} text=${v.covers_ro} seen=${seen.has(v.url)} onTick=${tick} />`)}</ul>
+    </div>`)}`;
 }
 
 function EntryForm({ form, rows, today, onClose, onAdd, onSave, onDelete }) {
